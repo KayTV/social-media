@@ -1,3 +1,22 @@
+.headerimg {
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 70%;
+  width: 100%;
+  background-attachment: fixed; }
+
+.headername {
+  text-shadow: 2px 2px grey;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  margin-top: 100px;
+  font-size: 65px;
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  font-weight: 700; }
+
 .navbar {
   margin-bottom: 0;
   background-color: rgba(254, 255, 252, 0.1);

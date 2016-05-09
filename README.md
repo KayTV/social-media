@@ -8,6 +8,7 @@
       <li>NodeJS</li>
       <li>Express</li>
       <li>AngularJS</li>
+      <li>Sass</li>
       <li>Sockets.io</li>
       <li>Twitter API</li>
       <li>Facebook API</li>
