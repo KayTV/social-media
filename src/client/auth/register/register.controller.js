@@ -23,7 +23,7 @@
           .catch(function (response) {
             console.log('error message', response);
             $scope.error = true;
-            $scope.errorMessage = response.err.message
+            $scope.errorMessage = "User already exists";
             $scope.disabled = false;
             $scope.user = {};
           });

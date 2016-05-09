@@ -53,3 +53,5 @@ router.get('/logout', function(req, res, next) {
   req.logout();
   res.status(200).json({status: 'Bye'});
 });
+
+module.exports = router;
