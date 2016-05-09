@@ -10,8 +10,8 @@
       <a class="navbar-brand" href="/#/"><img src="http://orig13.deviantart.net/0b77/f/2011/357/d/a/final_fantasy_v_logo_by_eldi13-d45iac8.png" style="width: 110%; margin-top: -15px;"/></a>
     </div>
       <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="/#/products" class="navstyle">Game Library</a></li>
-        <li><a href="/#/add_game" class="navstyle">Add Game</a></li> -->
+        <!-- <li><a href="/#/products" class="navstyle">Game Library</a></li> -->
+        <li><a href="/#/social_feed" class="navstyle">Feed</a></li>
         <li ng-if="!vm.isAuthenticated()"><a href="/#/register" class="navstyle"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li ng-if="!vm.isAuthenticated()"><a href="/#/login" class="navstyle"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <li ng-if="vm.isAuthenticated()" ng-controller="LogoutController"><a href="/#/" ng-click="logout()" class="navstyle"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

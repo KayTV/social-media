@@ -5,6 +5,10 @@ angular.module('app', ['ngRoute'])
       templateUrl: 'home/home.html',
       controller: 'HomeController'
     })
+    .when('/social_feed', {
+      templateUrl: 'social_feed/social_feed.html',
+      controller: 'SocialfeedController'
+    })
     .when('/register', {
       templateUrl: 'auth/register/register.html',
       controller: 'RegisterController'
