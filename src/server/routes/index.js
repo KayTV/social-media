@@ -4,6 +4,7 @@ var knex = require('../../../db/knex');
 var passport = require('../lib/auth');
 var helpers = require('../lib/helpers');
 
+
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user) {
     if (err) {

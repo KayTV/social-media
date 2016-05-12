@@ -1,4 +1,5 @@
 // *** main dependencies *** //
+require('.env');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,7 +9,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./lib/auth');
-
+var Twitter = require('twitter');
+var twitterStreamChannels = require('twitter-stream-channels')
 // *** routes *** //
 var routes = require('./routes/index.js');
 
@@ -16,8 +18,11 @@ var routes = require('./routes/index.js');
 // *** express instance *** //
 var app = express();
 
+app.set('port', process.env.PORT || 3000);
 
-
+var server = app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + server.address().port);
+});
 // *** config middleware *** //
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -48,7 +53,34 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// *** SOCKET.IO *** //
+var io = require('socket.io').listen(server);
+console.log('consumer key', process.env.TWITTER_CONSUMER_KEY);
+var client = new twitterStreamChannels({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token: process.env.TWITTER_ACCESS_TOKEN,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  });
 
+  var channels = {
+    'stream1': 'kitten',
+    'stream2': 'puppy'
+  };
+
+var stream = client.streamChannels({track: channels});
+stream.on('channels/stream1', function(tweet) {
+  console.log('streaming?');
+    console.log('tweet', tweet);
+    io.emit('newTweet', tweet);
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 // *** error handlers *** //
 
 // development error handler
@@ -74,4 +106,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+module.exports = server;

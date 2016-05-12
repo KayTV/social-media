@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/server/bin/www"
+    "start": "node ./src/server/app.js"
   },
   "dependencies": {
     "bcrypt": "^0.8.6",
@@ -21,7 +21,8 @@
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.4.6",
     "swig": "^1.4.2",
-    "twitter": "^1.2.5"
+    "twitter": "^1.2.5",
+    "twitter-stream-channels": "^1.0.0"
   },
   "devDependencies": {
     "browser-sync": "2.9.6",
