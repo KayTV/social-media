@@ -1,5 +1,4 @@
 // *** main dependencies *** //
-require('.env');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,6 +10,8 @@ var flash = require('connect-flash');
 var passport = require('./lib/auth');
 var Twitter = require('twitter');
 var twitterStreamChannels = require('twitter-stream-channels')
+if ( !process.env.NODE_ENV ) { require('dotenv').config(); }
+
 // *** routes *** //
 var routes = require('./routes/index.js');
 
@@ -71,7 +72,7 @@ var client = new twitterStreamChannels({
 var stream = client.streamChannels({track: channels});
 stream.on('channels/stream1', function(tweet) {
   console.log('streaming?');
-    console.log('tweet', tweet);
+    console.log('tweet', tweet.text);
     io.emit('newTweet', tweet);
 });
 
