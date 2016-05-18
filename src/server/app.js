@@ -71,9 +71,8 @@ var client = new twitterStreamChannels({
 
 var stream = client.streamChannels({track: channels});
 stream.on('channels/stream1', function(tweet) {
-  console.log('streaming?');
-    console.log('tweet', tweet.text);
-    io.emit('newTweet', tweet);
+  console.log('tweet', tweet.text);
+  io.emit('newTweet', tweet);
 });
 
 io.on('connection', function(socket){
