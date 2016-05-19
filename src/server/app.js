@@ -9,7 +9,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./lib/auth');
 var Twitter = require('twitter');
-var twitterStreamChannels = require('twitter-stream-channels')
+var twitterStreamChannels = require('twitter-stream-channels');
 if ( !process.env.NODE_ENV ) { require('dotenv').config(); }
 
 // *** routes *** //
